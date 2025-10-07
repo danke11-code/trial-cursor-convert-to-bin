@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hologram Fan Media Converter</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Hologram Fan Media Converter</h1>
+      <p class="subtitle">Convert MP4/JPG/PNG/GIF ↔ .bin with resolution and JPG background removal</p>
+    </header>
+
+    <nav class="tabs">
+      <button id="tab-to-bin" class="tab active" aria-controls="panel-to-bin" aria-selected="true">To .bin</button>
+      <button id="tab-from-bin" class="tab" aria-controls="panel-from-bin" aria-selected="false">From .bin</button>
+    </nav>
+
+    <main>
+      <section id="panel-to-bin" class="panel active" aria-labelledby="tab-to-bin">
+        <div class="card">
+          <h2>Source media</h2>
+          <input id="input-media" type="file" accept="video/mp4,image/png,image/jpeg,image/gif" />
+          <div class="row">
+            <div class="col">
+              <label>Resolution (WxH)</label>
+              <div class="row compact">
+                <input id="input-width" type="number" min="16" max="4096" value="720" />
+                <span class="times">×</span>
+                <input id="input-height" type="number" min="16" max="4096" value="720" />
+                <select id="preset-res">
+                  <option value="720x720">720×720</option>
+                  <option value="512x512">512×512</option>
+                  <option value="256x256">256×256</option>
+                  <option value="224x224">224×224</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <label>FPS</label>
+              <input id="input-fps" type="number" min="1" max="120" step="1" value="30" />
+            </div>
+            <div class="col">
+              <label>Pixel format</label>
+              <select id="input-pixfmt">
+                <option value="rgba8888" selected>RGBA8888</option>
+                <option value="rgb888">RGB888 (no alpha)</option>
+                <option value="rgb565">RGB565 (compact)</option>
+              </select>
+            </div>
+          </div>
+
+          <details class="bgrem" open>
+            <summary>JPG background removal</summary>
+            <div class="row">
+              <label class="toggle">
+                <input id="toggle-bg" type="checkbox" /> Enable chroma key
+              </label>
+            </div>
+            <div class="row compact">
+              <div class="col">
+                <label>Key color</label>
+                <input id="input-keycolor" type="color" value="#00ff00" />
+              </div>
+              <div class="col">
+                <label>Tolerance</label>
+                <input id="input-tolerance" type="range" min="0" max="100" value="20" />
+                <span id="label-tolerance">20</span>
+              </div>
+              <div class="col">
+                <button id="btn-eyedrop" type="button">Pick color</button>
+              </div>
+            </div>
+          </details>
+
+          <div class="actions">
+            <button id="btn-preview" type="button">Preview first frame</button>
+            <button id="btn-convert" class="primary" type="button">Convert to .bin</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Preview</h3>
+          <canvas id="canvas-preview" width="720" height="720"></canvas>
+          <div id="meta-out" class="meta"></div>
+        </div>
+      </section>
+
+      <section id="panel-from-bin" class="panel" aria-labelledby="tab-from-bin">
+        <div class="card">
+          <h2>.bin file</h2>
+          <input id="input-bin" type="file" accept=".bin" />
+          <div class="row compact">
+            <button id="btn-parse-bin" type="button">Parse .bin</button>
+            <button id="btn-export-webm" type="button">Export to WebM</button>
+            <button id="btn-export-pngs" type="button">Export frames as PNG</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Preview</h3>
+          <canvas id="canvas-bin" width="720" height="720"></canvas>
+          <div id="meta-bin" class="meta"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>Runs fully in your browser. No uploads.</small>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

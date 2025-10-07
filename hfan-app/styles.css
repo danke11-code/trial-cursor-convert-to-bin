@@ -1,0 +1,42 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #0b0f17;
+  --panel: #141a24;
+  --text: #e5eef7;
+  --subtext: #9ab;
+  --accent: #4cc9f0;
+  --accent-2: #f72585;
+  --border: #223;
+}
+html, body { height: 100%; }
+body {
+  margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg); color: var(--text);
+}
+.app-header { padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.app-header h1 { margin: 0 0 4px; font-size: 20px; }
+.subtitle { margin: 0; color: var(--subtext); }
+.tabs { display: flex; gap: 8px; padding: 8px 20px; border-bottom: 1px solid var(--border); }
+.tab { background: transparent; color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+.tab.active { background: var(--panel); border-color: var(--accent); }
+main { display: grid; gap: 16px; padding: 16px 20px; grid-template-columns: 1fr 1fr; }
+.panel { display: none; grid-column: 1 / -1; gap: 16px; }
+.panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.card { background: var(--panel); border: 1px solid var(--border); padding: 16px; border-radius: 12px; }
+.card h2, .card h3 { margin-top: 0; }
+.row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.row.compact { gap: 8px; }
+.col { display: grid; gap: 6px; }
+label { color: var(--subtext); font-size: 12px; }
+input[type="number"], select, input[type="file"], input[type="color"] { background: #0d1320; color: var(--text); border: 1px solid var(--border); padding: 8px; border-radius: 8px; }
+input[type="range"] { width: 160px; }
+.toggle { display: flex; align-items: center; gap: 8px; }
+.actions { display: flex; gap: 12px; }
+button { background: #0d1320; color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #091018; }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+canvas { width: 100%; height: auto; background: #000; border-radius: 8px; }
+.meta { margin-top: 8px; color: var(--subtext); font-size: 12px; }
+footer { padding: 16px 20px; color: var(--subtext); }
+.bgrem summary { cursor: pointer; }
+.times { color: var(--subtext); }
