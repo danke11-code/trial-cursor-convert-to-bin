@@ -1,0 +1,123 @@
+/*
+  Minimal, offline-friendly CSS. No external fonts or frameworks.
+*/
+:root {
+  --bg: #0b0c10;
+  --card: #14151b;
+  --muted: #9aa0aa;
+  --text: #e8eaf0;
+  --accent: #4f9cf9;
+  --accent-strong: #2f7ae5;
+  --border: #262a33;
+  --ok: #34d399;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(1200px 800px at 20% -10%, #151826, transparent), var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 980px;
+  margin: 24px auto;
+  padding: 0 16px 48px;
+}
+
+header {
+  margin: 12px 0 18px;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.subtitle { color: var(--muted); margin: 0; }
+
+section { background: transparent; }
+
+.controls { margin: 16px 0 20px; }
+
+.dropzone {
+  position: relative;
+  border: 2px dashed var(--border);
+  background: var(--card);
+  border-radius: 12px;
+  padding: 28px;
+  text-align: center;
+  outline: none;
+  transition: all 0.15s ease-in-out;
+}
+.dropzone:hover, .dropzone:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79, 156, 249, 0.15) inset;
+}
+.dropzone.dragover {
+  border-color: var(--ok);
+  background: #172029;
+}
+.dropzone input[type=file] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.dz-content { pointer-events: none; }
+.dz-icon { font-size: 28px; margin-bottom: 6px; }
+.dz-help { color: var(--muted); font-size: 13px; margin-top: 4px; }
+.linklike { color: var(--accent); text-decoration: underline; }
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  align-items: center;
+  margin-top: 14px;
+}
+.options label { display: inline-flex; align-items: center; gap: 8px; }
+.options select { padding: 6px 8px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); }
+.checkbox input { margin-right: 6px; }
+
+.primary {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+.primary[disabled] { filter: grayscale(1) brightness(0.7); cursor: not-allowed; }
+
+.queue { margin-top: 10px; color: var(--muted); font-size: 14px; }
+.progress-wrap { margin-top: 12px; }
+.hidden { display: none; }
+progress { width: 100%; height: 10px; }
+.progress-label { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+}
+.card h3 { margin: 0 0 8px; font-size: 16px; }
+.card .meta { color: var(--muted); font-size: 12px; margin-bottom: 10px; }
+.card .actions { display: flex; gap: 8px; align-items: center; }
+.card a.button {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border);
+  background: #1b1e27; color: var(--text); text-decoration: none; font-weight: 600; font-size: 14px;
+}
+.card a.button:hover { border-color: var(--accent); color: white; }
+.fineprint { color: var(--muted); font-size: 12px; margin-top: 18px; }
